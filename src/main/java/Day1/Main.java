@@ -1,19 +1,43 @@
 package Day1;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+    public static void main(String[] args) throws FileNotFoundException {
+        //Create  scanner class for reading input file
+        File file = new File("C:\\Users\\jlopc\\OneDrive - UPV\\UPV\\Code\\Java\\AdventOfCode\\src\\main\\java\\Day1\\input.txt");
+        Scanner sc = null;
+        try {
+            sc = new Scanner(file);
         }
+        catch (FileNotFoundException e) {
+            System.err.println(file.getAbsolutePath());
+        }
+
+        int sum = 0;
+
+        //For each line, get the integer and print it to stdout
+        if (sc != null) {
+            while (sc.hasNext()) {
+                //We use a stack for getting first and last int
+                Stack<Integer> stack = new Stack<Integer>();
+                //Get line
+                String line = sc.nextLine();
+                for (int i=0; line.length()>i; i++) {
+                    char c = line.charAt(i);
+                    boolean flag = Character.isDigit(c);
+                    if (flag) {
+                        int d = Character.getNumericValue(c);
+                        stack.push(d);
+                    }
+                }
+                int i1 = stack.firstElement();
+                int i2 = stack.peek();
+                int a = Integer.parseInt(Integer.toString(i1) + Integer.toString(i2));
+                sum = sum + a;
+            }
+        }
+        System.out.println(sum);
     }
 }
