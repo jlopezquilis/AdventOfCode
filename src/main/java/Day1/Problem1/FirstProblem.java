@@ -1,9 +1,9 @@
-package Day1;
+package Day1.Problem1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class Main {
+public class FirstProblem {
     public static void main(String[] args) throws FileNotFoundException {
         //Create  scanner class for reading input file
         File file = new File("C:\\Users\\jlopc\\OneDrive - UPV\\UPV\\Code\\Java\\AdventOfCode\\src\\main\\java\\Day1\\input.txt");
